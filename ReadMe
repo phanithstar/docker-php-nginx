@@ -1,0 +1,45 @@
+2. Using Docker Toolbox 		
+	Goal: Setup Nginx web server with PHP & PHP-FPM
+		- Lightweight and secure Alpine Linux 
+		- Small Docker image
+		- PHP 7.3 better performance, lower CPU usage & memory 
+		- Using PHP-FPM's on-demand PM - Max 100 concurrent users
+		- Nginx, PHP-FPM and Supervisord run under non-privileged user (More secure)
+		- Change log location: /home/web/log
+	1. Tools: 
+		Docker Host
+		Linux - alpine:3.12
+		PHP 7 & PHP-FPM 7
+		Nginx 1.18
+		Supervisor (run Nginx & PHP-FPM under non-privileged user)
+	
+	2. File Structure:
+		docker-php-nginx
+			Dockerfile - Self explanation
+			config - Copy configuration file to Image
+				fpm-pool.conf
+				php-fpm.conf
+				nginx.conf
+				php.ini
+				supervisord.conf
+			src
+				index.html
+				info.php
+				error.php - test error log
+	
+	3. Build Linux Nginx Server Image and run as container
+	
+		Source files in Github.com (https://github.com/phanithstar/docker-php-nginx)
+			
+		cd /docker-php-nginx
+		
+		docker build . -t phanithstar/docker-php-nginx:v1
+		
+		docker run -p 80:8080 phanithstar/docker-php-nginx:v1 
+		
+		docker run -p 80:8080 -it -d phanithstar/docker-php-nginx:v1 (Run in detach mode)
+	
+		docker exec -it container_name/id /bin/sh (Get in running container)
+
+
+		Docker PHP-FPM & Nginx Source (https://github.com/TrafeX/docker-php-nginx)
