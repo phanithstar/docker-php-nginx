@@ -42,4 +42,4 @@
 		docker exec -it container_name/id /bin/sh (Get in running container)
 
 
-		Docker PHP-FPM & Nginx Source (https://github.com/TrafeX/docker-php-nginx)
+		Docker PHP-FPM & Nginx - Source Credit (https://github.com/TrafeX/docker-php-nginx)
